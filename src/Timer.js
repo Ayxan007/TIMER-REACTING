@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Timer from './Timer';
 
-function App() {
+function Timer() {
   const [seconds, setSeconds] = useState(60);
   const [isActive, setIsActive] = useState(false);
   useEffect(() => {
@@ -18,12 +17,18 @@ function App() {
     return () => clearInterval(interval);
   }, [isActive, seconds]);
 
-  const starTimer = () => {
+  const startTimer = () => {
     setIsActive(true);
   };
   return (
-    <Timer/>
+    <div className='Timer'>
+      <div className='time'>
+        00:{seconds} 
+        </div>
+      <h2>Timer Avtomatik</h2>
+      <button onClick={startTimer} disabled={isActive}>start timer</button>
+    </div>
   );
 }
 
-export default App;
+export default Timer;
